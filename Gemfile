@@ -31,7 +31,19 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  #rspec-rails
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'faker'
+  #shoulda-matchers
+  gem 'shoulda-matchers'
+  #rubocop
+  gem 'rubocop', '~> 0.57.2'
+  #gem 'rubocop-rspec', '~> 0.9.0'
+  #gem 'rubocop-performance', '~> 0.5.0'
+  #gem 'rubocop-rails', '~> 0.5.0'
+  #database_cleaner
+  gem 'database_cleaner'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
 end
 
