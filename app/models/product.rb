@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: products
@@ -11,7 +13,7 @@
 #  updated_at  :datetime         not null
 #
 class Product < ApplicationRecord
-  #create many to many relationship with order
+  # create many to many relationship with order
   has_many :order_items
   has_many :orders, through: :order_items
 end

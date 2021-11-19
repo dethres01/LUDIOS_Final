@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: order_items
@@ -10,5 +12,4 @@ class OrderItem < ApplicationRecord
   # Associations
   belongs_to :order
   belongs_to :product
-  
 end

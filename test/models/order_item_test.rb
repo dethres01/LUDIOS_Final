@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: order_items
@@ -6,7 +8,7 @@
 #  product_id :bigint           not null
 #  quantity   :integer
 #
-require "test_helper"
+require 'test_helper'
 
 class OrderItemTest < ActiveSupport::TestCase
   # test "the truth" do
