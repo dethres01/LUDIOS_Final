@@ -6,7 +6,7 @@ module Api
       before_action :set_client, only: %i[show update destroy]
       def index
         @clients = Client.all.order(name: :asc)
-        render json: @clients
+        render json: @clients, status: :ok
       end
 
       # GET /clients/:id
@@ -28,19 +28,24 @@ module Api
       def create
         @client = Client.new(client_params)
         if @client.save
-          render json: @client
+          render json: @client, status: :created
         else
-          render json: { error: 'Client not created' }, status: 404
+          render json: { error: 'Client not created' }, status: 422
         end
       end
 
       # PATCH /clients/:id
       def update
-        if @client.update(client_params)
-          render json: @client
+        if @client
+          if @client.update(client_params)
+            render json: @client
+          else
+            render json: { error: 'Client not updated' }, status: 422
+          end
         else
-          render json: { error: 'Client not updated' }, status: 404
+          render json: { error: 'Client not found' }, status: 404
         end
+   
       end
 
       # DELETE /clients/:id

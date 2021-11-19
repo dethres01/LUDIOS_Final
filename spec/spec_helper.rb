@@ -1,5 +1,7 @@
 
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+#require factory_bot_rails
+require 'factory_bot_rails'
 RSpec.configure do |config|
   #set up database_cleaner on rspec
   config.before(:suite) do
@@ -15,9 +17,9 @@ RSpec.configure do |config|
   #set up factory_bot_rails on rspec
   config.include FactoryBot::Syntax::Methods
   #set up shoulda_matchers on rspec
-  config.include(Shoulda::Matchers::ActiveModel, type: :model)
-  config.include(Shoulda::Matchers::ActiveRecord, type: :model)
-  
+  #config.include(Shoulda::Matchers::ActiveModel, type: :model)
+  #config.include(Shoulda::Matchers::ActiveRecord, type: :model)
+
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
