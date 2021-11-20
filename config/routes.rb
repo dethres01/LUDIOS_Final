@@ -8,6 +8,12 @@ Rails.application.routes.draw do
       post 'clients', to: 'clients#create'
       put 'clients/:id', to: 'clients#update'
       delete 'clients/:id', to: 'clients#destroy'
+      #orders routes
+      get 'orders', to: 'orders#index'
+      get 'orders/:id', to: 'orders#show'
+      post 'orders', to: 'orders#create'
+      put 'orders/:id', to: 'orders#update'
+      delete 'orders/:id', to: 'orders#destroy'
     end
   end
 
