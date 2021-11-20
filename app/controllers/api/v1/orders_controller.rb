@@ -46,7 +46,8 @@ module Api
       private
 
       def order_params
-        params.require(:order).permit(:client_id, :status,:paid,:payment_method,:total_price,:remaining_price,:description,:order_items_attributes => [:id, :product_id, :quantity, :_destroy])
+        params.require(:order).permit(:client_id, :status, :paid, :payment_method, :total_price, :remaining_price,
+                                      :description, order_items_attributes: %i[id product_id quantity _destroy])
       end
 
       def set_order

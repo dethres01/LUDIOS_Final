@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MakePriceNumber < ActiveRecord::Migration[6.1]
   def change
     change_column :orders, :remaining_price, :decimal, precision: 10, scale: 2, using: 'remaining_price::numeric(10,2)'

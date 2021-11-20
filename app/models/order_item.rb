@@ -20,8 +20,9 @@ class OrderItem < ApplicationRecord
   after_save :changed?
   # Methods
   def calculate_price
-    self.price = self.product.price * self.quantity
+    self.price = product.price * quantity
   end
+
   def changed?
     order.calculate_total_price
     order.calculate_remaining_price

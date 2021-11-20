@@ -45,7 +45,6 @@ module Api
         else
           render json: { error: 'Client not found' }, status: 404
         end
-   
       end
 
       # DELETE /clients/:id

@@ -20,7 +20,7 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
 gem 'pry'
-#active_model_serializers
+# active_model_serializers
 gem 'active_model_serializers', '~> 0.10.0'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
@@ -34,20 +34,20 @@ gem 'active_model_serializers', '~> 0.10.0'
 gem 'bootsnap', '>= 1.4.4', require: false
 
 group :development, :test do
-  #rspec-rails
-  gem 'rspec-rails'
+  # rspec-rails
   gem 'factory_bot_rails'
   gem 'faker'
-  #shoulda-matchers
+  gem 'rspec-rails'
+  # shoulda-matchers
   gem 'shoulda-matchers'
-  #rubocop
+  # rubocop
   gem 'rubocop', '~> 0.57.2'
-  #gem 'rubocop-rspec', '~> 0.9.0'
-  #gem 'rubocop-performance', '~> 0.5.0'
-  #gem 'rubocop-rails', '~> 0.5.0'
-  #database_cleaner
-  gem 'database_cleaner'
+  # gem 'rubocop-rspec', '~> 0.9.0'
+  # gem 'rubocop-performance', '~> 0.5.0'
+  # gem 'rubocop-rails', '~> 0.5.0'
+  # database_cleaner
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'database_cleaner'
 end
 
 group :development do
