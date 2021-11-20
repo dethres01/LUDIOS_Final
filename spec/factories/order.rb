@@ -1,16 +1,16 @@
 
 FactoryBot.define do
   factory :order do
-    #order attributes
+    # create order with order_items
     client
-    status { 'ongoing'}
-    payment_method { 'cash'}
-    total_price { 0 }
-    remaining_price { 0 }
-    description { 'test' }
-    #order_items attributes
+    status { 'ongoing' }
+    
+    paid {0}
+    payment_method {'cash'}
+    description {'test'}
+    # add order_items on creation
     transient do
-      order_items_count { 1 }
+      order_items_count {1}
     end
     after(:create) do |order, evaluator|
       create_list(:order_item, evaluator.order_items_count, order: order)

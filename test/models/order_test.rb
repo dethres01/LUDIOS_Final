@@ -7,12 +7,13 @@
 #  id              :bigint           not null, primary key
 #  client_id       :bigint
 #  description     :text
-#  status          :string
+#  status          :string           default("ongoing")
 #  payment_method  :string
-#  total_price     :decimal(10, 2)
-#  remaining_price :decimal(10, 2)
+#  total_price     :decimal(10, 2)   default(0.0)
+#  remaining_price :decimal(10, 2)   default(0.0)
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  paid            :decimal(10, 2)   default(0.0)
 #
 require 'test_helper'
 

@@ -23,6 +23,7 @@ module Api
         if @order.save
           render json: @order, status: :created
         else
+
           render json: @order.errors, status: :unprocessable_entity
         end
       end
@@ -45,7 +46,7 @@ module Api
       private
 
       def order_params
-        params.require(:order).permit(:user_id, :status, :total_price)
+        params.require(:order).permit(:client_id, :status,:paid,:payment_method,:total_price,:remaining_price,:description,:order_items_attributes => [:id, :product_id, :quantity, :_destroy])
       end
 
       def set_order
