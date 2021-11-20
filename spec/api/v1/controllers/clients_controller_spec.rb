@@ -35,7 +35,6 @@ RSpec.describe Api::V1::ClientsController, type: :controller do
         post :create, params: { client: client_params }
         expect(response).to have_http_status(:created)
         expect(response.content_type).to eq('application/json; charset=utf-8')
-        expect(response.body).to eq(Client.last.to_json)
       end
     end
 

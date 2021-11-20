@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_19_235645) do
+ActiveRecord::Schema.define(version: 2021_11_20_004058) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,8 +36,8 @@ ActiveRecord::Schema.define(version: 2021_11_19_235645) do
     t.text "description"
     t.string "status"
     t.string "payment_method"
-    t.string "total_price"
-    t.string "remaining_price"
+    t.decimal "total_price", precision: 10, scale: 2
+    t.decimal "remaining_price", precision: 10, scale: 2
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["client_id"], name: "index_orders_on_client_id"
