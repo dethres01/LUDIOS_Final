@@ -13,6 +13,5 @@ FactoryBot.define do
       create_list(:product_attribute, evaluator.product_attributes_count, product: product)
       create_list(:product_type, evaluator.product_type_count, product: product)
     end
-
   end
 end

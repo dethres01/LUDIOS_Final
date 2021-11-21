@@ -3,7 +3,7 @@
 module Api
   module V1
     class ProductsController < ApplicationController
-      before_action :set_product, only: [:show, :update, :destroy]
+      before_action :set_product, only: %i[show update destroy]
 
       # GET /products
       def index
@@ -52,13 +52,16 @@ module Api
           render json: { error: 'Product not found' }, status: :not_found
         end
       end
+
       private
 
       def set_product
         @product = Product.find(params[:id])
       end
+
       def product_params
-        params.require(:product).permit(:name, :description, :price, product_type_attributes: [:id,:name, :_destroy], product_attributes_attributes: [:id, :name, :value, :_destroy])
+        params.require(:product).permit(:name, :description, :price, product_type_attributes: %i[id name _destroy],
+                                                                     product_attributes_attributes: %i[id name value _destroy])
       end
     end
   end
