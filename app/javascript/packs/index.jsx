@@ -5,6 +5,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import App from '../components/app'
+import Navigation from '../components/misc/navbar/navbar'
 import { BrowserRouter } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -13,6 +14,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
     <BrowserRouter>
+      < Navigation />
       <App/>
     </BrowserRouter>,
     document.body.appendChild(document.createElement('div')),

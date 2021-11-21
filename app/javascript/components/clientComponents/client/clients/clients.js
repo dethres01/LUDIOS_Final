@@ -26,7 +26,6 @@ const Clients = () => {
   })
   return (
     <Fragment>
-      <Navigation />
       <div className="Header">
 
       </div>
