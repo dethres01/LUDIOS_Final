@@ -27,5 +27,6 @@ class OrderItem < ApplicationRecord
     order.calculate_total_price
     order.calculate_remaining_price
     order.set_status
+    order.save
   end
 end

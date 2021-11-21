@@ -11,7 +11,6 @@
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #
-# rspec model test for client
 require 'rails_helper'
 
 RSpec.describe Client, type: :model do
