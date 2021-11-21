@@ -1,5 +1,7 @@
 import React, {useState,useEffect,Fragment} from 'react';
 import axios from 'axios';
+import Container from 'react-bootstrap/Container';
+import Navigation from '../../../misc/navbar/navbar';
 
 const Clients = () => {
   const [clients, setClients] = useState([]);
@@ -24,9 +26,9 @@ const Clients = () => {
   })
   return (
     <Fragment>
-      <h1>Clients</h1>
-      <div>
-        {list}
+      <Navigation />
+      <div className="Header">
+
       </div>
     </Fragment>
   );
