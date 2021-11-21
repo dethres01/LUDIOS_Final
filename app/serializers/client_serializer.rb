@@ -10,6 +10,8 @@
 #  notes        :text
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  last_name    :string
+#  slug         :string
 #
 class ClientSerializer < ActiveModel::Serializer
   has_many :orders

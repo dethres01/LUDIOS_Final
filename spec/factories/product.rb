@@ -5,8 +5,8 @@ FactoryBot.define do
     name { Faker::Commerce.product_name }
     price { Faker::Commerce.price }
     description { Faker::Lorem.paragraph }
-    quantity { Faker::Number.number(2) }
-    minimum_quantity { Faker::Number.number(2) }
+    quantity { Faker::Number.number(digits: 2) }
+    minimum_quantity { Faker::Number.number(digits: 2) }
     transient do
       product_attributes_count { 4 }
       product_type_count { 1 }
