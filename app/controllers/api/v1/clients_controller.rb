@@ -59,7 +59,7 @@ module Api
       private
 
       def set_client
-        @client = Client.find(params[:id])
+        @client = Client.find_by(slug: params[:slug])
       end
 
       def client_params

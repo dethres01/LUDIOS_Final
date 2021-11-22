@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       get 'clients', to: 'clients#index'
-      get 'clients/:id', to: 'clients#show'
+      get 'clients/:slug', to: 'clients#show'
       post 'clients', to: 'clients#create'
       put 'clients/:id', to: 'clients#update'
       delete 'clients/:id', to: 'clients#destroy'

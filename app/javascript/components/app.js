@@ -19,8 +19,8 @@ const App = () => {
     {/*static routes*/ }
     <Route path="/" element={<Home/>} />
     {/*client routes*/ }
-    <Route path="/clients" element={<Clients/>} />
-    <Route path="/clients/:name" element={<Client/>} />
+    <Route exact path="/clients" element={<Clients/>} />
+    <Route exact path="/clients/:slug" element={<Client/>} />
     <Route path="/clients/new" element={<ClientForm/>} />
     {/*order routes*/ }
     <Route path="/orders" element={<Orders/>} />

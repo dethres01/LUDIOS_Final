@@ -19,7 +19,7 @@ class OrderSerializer < ActiveModel::Serializer
   # has_many :order_items
   # has_many :products, through: :order_items
   belongs_to :client
-  attributes :description, :status, :payment_method, :total_price, :remaining_price, :paid, :product_list
+  attributes :id,:description, :status, :payment_method, :total_price, :remaining_price, :paid, :product_list
 
   def product_list
     object.products.map do |product|

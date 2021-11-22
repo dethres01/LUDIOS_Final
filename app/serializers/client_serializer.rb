@@ -15,5 +15,5 @@
 #
 class ClientSerializer < ActiveModel::Serializer
   has_many :orders
-  attributes :name, :phone_number, :notes
+  attributes :name, :phone_number, :notes, :last_name, :slug
 end
