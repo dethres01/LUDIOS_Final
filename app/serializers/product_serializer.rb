@@ -18,7 +18,7 @@ class ProductSerializer < ActiveModel::Serializer
   # has_many :orders, through: :order_items
   has_many :product_attributes
   has_one :product_type
-  attributes :name, :description, :price, :product_type
+  attributes :name, :description, :price, :product_type, :quantity, :minimum_quantity
 
   def product_type
     object.product_type.name
