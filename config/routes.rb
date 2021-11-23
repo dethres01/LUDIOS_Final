@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
       # products routes
       get 'products', to: 'products#index'
-      get 'products/:id', to: 'products#show'
+      get 'products/:slug', to: 'products#show'
       post 'products', to: 'products#create'
       put 'products/:id', to: 'products#update'
       delete 'products/:id', to: 'products#destroy'

@@ -11,7 +11,7 @@ FactoryBot.define do
     description { 'test' }
     # add order_items on creation
     transient do
-      order_items_count { 1 }
+      order_items_count { 3 }
     end
     after(:create) do |order, evaluator|
       create_list(:order_item, evaluator.order_items_count, order: order)

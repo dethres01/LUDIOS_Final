@@ -12,6 +12,8 @@
 #  updated_at       :datetime         not null
 #  quantity         :integer          default(0)
 #  minimum_quantity :integer          default(0)
+#  slug             :string
+#  needed           :boolean          default(FALSE)
 #
 require 'rails_helper'
 

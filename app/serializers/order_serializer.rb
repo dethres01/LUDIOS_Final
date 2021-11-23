@@ -27,7 +27,8 @@ class OrderSerializer < ActiveModel::Serializer
         name: product.name,
         price: product.price,
         quantity: object.order_items.find_by(product_id: product.id).quantity,
-        compound_price: object.order_items.find_by(product_id: product.id).price
+        compound_price: object.order_items.find_by(product_id: product.id).price,
+        slug: product.slug
       }
     end
   end

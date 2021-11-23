@@ -12,6 +12,8 @@
 #  updated_at       :datetime         not null
 #  quantity         :integer          default(0)
 #  minimum_quantity :integer          default(0)
+#  slug             :string
+#  needed           :boolean          default(FALSE)
 #
 class Product < ApplicationRecord
   # create many to many relationship with order
@@ -28,4 +30,18 @@ class Product < ApplicationRecord
   validates :price, presence: true
   validates :price, numericality: { greater_than: 0 }
   # require at least one attribute
+  before_save :check_needed
+  before_create :set_slug
+
+  def check_needed
+    if self.quantity < self.minimum_quantity
+      needed = true
+    else
+      needed = false
+    end
+  end
+  def set_slug
+    var = "#{self.name} #{self.id}"
+    self.slug = var.parameterize
+  end
 end

@@ -56,7 +56,7 @@ module Api
       private
 
       def set_product
-        @product = Product.find(params[:id])
+        @product = Product.find_by(slug: params[:slug])
       end
 
       def product_params
