@@ -1,9 +1,9 @@
 import React from 'react';
 import {Route, Routes} from 'react-router-dom';
 import Home from './home/home';
-import Clients from './clientComponents/client/clients/clients';
-import Client from './clientComponents/client/client/client';
-import ClientForm from './clientComponents/client/client_form/client_form';
+import Clients from './clientComponents/clients/clients';
+import Client from './clientComponents/client/client';
+import ClientForm from './clientComponents/client_form/client_form';
 import OrderForm from './orderComponents/order_form/order_form';
 import Order from './orderComponents/order/order';
 import Orders from './orderComponents/orders/orders';

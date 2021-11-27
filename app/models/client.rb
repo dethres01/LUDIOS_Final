@@ -20,10 +20,12 @@ class Client < ApplicationRecord
   # Validations
   validates :name, presence: true
   # Callbacks
-  before_save :create_slug
+  before_create :create_slug
 
   def create_slug
+    
     crude_slug = "#{self.name} #{self.last_name}"
+    puts "crude_slug #{crude_slug}"
     self.slug = crude_slug.parameterize
   end
 end

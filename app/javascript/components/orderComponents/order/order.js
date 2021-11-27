@@ -1,7 +1,7 @@
 import React, {useEffect,useState} from "react";
 import {useParams} from "react-router-dom";
 import axios from "axios";
-import Client from "../../clientComponents/client/clients/client";
+import Client from "../../clientComponents/clients/client";
 import Product from "./product"
 const Order = () => {
   const [order, setOrder] = useState({});
