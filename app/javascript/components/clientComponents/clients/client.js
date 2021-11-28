@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const Client = (props) => {
   return (
-      <Card>
+      <Card className="mb-3">
         <Card.Header>{props.attributes.name} {props.attributes.last_name}</Card.Header>
         <Card.Body>
           <Card.Title>{props.attributes.phone_number}</Card.Title>

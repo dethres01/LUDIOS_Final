@@ -6,9 +6,11 @@ module Api
       before_action :set_client, only: %i[show update destroy]
       def index
         @clients = Client.all
+
         if !params[:search].nil? && params[:search].present?
           @clients = ClientsSearchService.search(@clients,params[:search])
         end
+        
         render json: @clients, status: :ok
       end
 

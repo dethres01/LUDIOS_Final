@@ -1,10 +1,10 @@
 import React, {useState,useEffect,Fragment} from 'react';
 import axios from 'axios';
 import Client from './client';
+import SearchBar from '../../misc/searchbar/searchbar';
 
 const Clients = () => {
   const [clients, setClients] = useState([]);
-  console.log(clients);
   useEffect(() => {
     //Get all clients from api
     //update clients on our state
@@ -14,6 +14,14 @@ const Clients = () => {
     })
     .catch(resp => console.log(resp));
   }, []);
+  const handleChange = (e) => {
+;
+    axios.get(`/api/v1/clients?search=${e.target.value}`)
+    .then( resp => {
+      setClients(resp.data);
+    })
+    .catch(resp => console.log(resp));
+  }
   const list = clients.map(client => {
     return (
       <div key = {client.slug}>
@@ -31,7 +39,12 @@ const Clients = () => {
         <div className="Subheader">
         </div>
       </div>
-      <div>
+      <div className="SearchBar">
+        < SearchBar 
+          handleChange = {handleChange}
+        />
+      </div>
+      <div className="Clients Listing">
         {list}
       </div>
     </div>

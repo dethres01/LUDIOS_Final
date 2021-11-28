@@ -16,11 +16,12 @@ import ProductForm from './productComponents/product_form/product_form';
 const App = () => {
   return (
   <Routes>
+
     {/*static routes*/ }
     <Route path="/" element={<Home/>} />
     {/*client routes*/ }
-    <Route exact path="/clients" element={<Clients/>} />
-    <Route exact path="/clients/:slug" element={<Client/>} />
+    <Route path="/clients" element={<Clients/>} />
+    <Route path="/clients/:slug" element={<Client/>} />
     <Route path="/clients/new" element={<ClientForm/>} />
     {/*order routes*/ }
     <Route path="/orders" element={<Orders/>} />
