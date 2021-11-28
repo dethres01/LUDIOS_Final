@@ -9,6 +9,7 @@ FactoryBot.define do
     paid { 0 }
     payment_method { 'cash' }
     description { 'test' }
+    due_date { Date.new(2021,12,rand(1..30)) }
     # add order_items on creation
     transient do
       order_items_count { 3 }

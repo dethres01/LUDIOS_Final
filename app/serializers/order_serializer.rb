@@ -14,6 +14,7 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  paid            :decimal(10, 2)   default(0.0)
+#  due_date        :date
 #
 class OrderSerializer < ActiveModel::Serializer
   # has_many :order_items

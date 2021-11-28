@@ -7,6 +7,10 @@ module Api
       # GET /api/v1/orders
       def index
         @orders = Order.all
+        # look for status params
+        if !params[:status].nil? && params[:status].present?
+          @orders = OrdersSearchService.search(@orders, params[:status])
+        end
         render json: @orders
       end
 
@@ -47,7 +51,7 @@ module Api
 
       def order_params
         params.require(:order).permit(:client_id, :status, :paid, :payment_method, :total_price, :remaining_price,
-                                      :description, order_items_attributes: %i[id product_id quantity _destroy])
+                                      :description, :due_date, order_items_attributes: %i[id product_id quantity _destroy])
       end
 
       def set_order

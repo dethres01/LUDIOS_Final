@@ -8,6 +8,9 @@ module Api
       # GET /products
       def index
         @products = Product.all
+        if !params[:needed].nil? && params[:needed].present?
+          @products = ProductsSearchService.search(@products, params[:needed])
+        end
         render json: @products, status: :ok
       end
 

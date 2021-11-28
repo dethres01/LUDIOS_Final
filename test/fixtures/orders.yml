@@ -12,6 +12,7 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  paid            :decimal(10, 2)   default(0.0)
+#  due_date        :date
 #
 
 # This model initially had no columns defined. If you add columns to the
