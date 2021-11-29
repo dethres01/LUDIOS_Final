@@ -8,7 +8,8 @@ import Order from './orderComponents/order/order';
 import Orders from './orderComponents/orders/orders';
 import Products from './productComponents/products/products';
 import Product from './productComponents/product/product';
-import ProductForm from './productComponents/product_form/product_form';
+import NewProduct from './productComponents/new/newproduct';
+import EditProduct from './productComponents/edit/editproduct';
 import NewClient from './clientComponents/new/newclient';
 import EditClient from './clientComponents/edit/editclient';
 
@@ -32,7 +33,8 @@ const App = () => {
     {/*Product routes*/ }
     <Route path="/products" element={<Products/>} />
     <Route path="/products/:slug" element={<Product/>} />
-    <Route path="/products/new" element={<ProductForm/>} />
+    <Route path="/products/new" element={<NewProduct/>} />
+    <Route path="/products/edit/:slug" element={<EditProduct/>} />
 
 
   </Routes>);

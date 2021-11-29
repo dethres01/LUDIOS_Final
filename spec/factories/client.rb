@@ -4,6 +4,7 @@
 FactoryBot.define do
   factory :client do
     name { Faker::Name.name }
+    last_name { Faker::Name.last_name }
     phone_number { Faker::PhoneNumber.phone_number }
     notes { Faker::Lorem.paragraph }
 

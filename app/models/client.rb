@@ -21,12 +21,12 @@ class Client < ApplicationRecord
   validates :name, presence: true
   # Callbacks
   before_create :create_slug
-  before_create :normalize_name
-  before_save :normalize_name
+  after_create :normalize_name
+  after_save :normalize_name
 
   def normalize_name
-    self.name = name.downcase
-    self.last_name = last_name.downcase
+    self.name.downcase!
+    self.last_name.downcase!
   end
   
   def create_slug

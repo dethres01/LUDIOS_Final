@@ -14,6 +14,7 @@
 #  minimum_quantity :integer          default(0)
 #  slug             :string
 #  needed           :boolean          default(FALSE)
+#  product_type_id  :integer
 #
 require 'test_helper'
 

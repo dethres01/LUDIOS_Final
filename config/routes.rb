@@ -21,6 +21,7 @@ Rails.application.routes.draw do
       post 'products', to: 'products#create'
       put 'products/:id', to: 'products#update'
       delete 'products/:id', to: 'products#destroy'
+      get 'types', to: 'products#types'
     end
   end
 

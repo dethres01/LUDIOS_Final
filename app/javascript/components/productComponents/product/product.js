@@ -1,7 +1,8 @@
 
 import React, {useState,useEffect} from "react";
-import { useParams } from "react-router";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
+import Button from "react-bootstrap/Button";
 
 
 
@@ -12,7 +13,6 @@ const Product = () => {
   let params = useParams();
 
   useEffect(() => {
-    console.log(params);
     axios.get(`/api/v1/products/${params.slug}`)
     .then(res => {
       console.log(res.data);
@@ -38,6 +38,9 @@ const Product = () => {
   })
   return (
     <div>
+      <div>
+        <Button as={Link} to={`/products/edit/${product.slug}`}>Editar</Button>
+      </div>
       <div className="header">
         <h1>{product.slug}</h1>
       </div>

@@ -12,6 +12,7 @@
 #  minimum_quantity :integer          default(0)
 #  slug             :string
 #  needed           :boolean          default(FALSE)
+#  product_type_id  :integer
 #
 
 # This model initially had no columns defined. If you add columns to the

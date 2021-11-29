@@ -17,5 +17,4 @@ class ProductAttribute < ApplicationRecord
   # validations
   validates :name, presence: true
   validates :description, presence: true
-  validates :product_id, presence: true
 end

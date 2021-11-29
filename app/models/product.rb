@@ -14,17 +14,17 @@
 #  minimum_quantity :integer          default(0)
 #  slug             :string
 #  needed           :boolean          default(FALSE)
+#  product_type_id  :integer
 #
 class Product < ApplicationRecord
   # create many to many relationship with order
   has_many :order_items
   has_many :orders, through: :order_items
   has_many :product_attributes
-  has_one :product_type
+  belongs_to :product_type
 
   # nested attributes
-  accepts_nested_attributes_for :product_attributes, allow_destroy: true
-  accepts_nested_attributes_for :product_type, allow_destroy: true
+  accepts_nested_attributes_for :product_attributes, allow_destroy: true, reject_if: :all_blank
   # validations
   validates :name, presence: true
   validates :price, presence: true

@@ -26,16 +26,18 @@ module Api
       # POST /products
       def create
         @product = Product.new(product_params)
+        binding.pry
         if @product.save
           render json: @product, status: :created
         else
-          render json: { error: 'Product not created' }, status: :unprocessable_entity
+          render json: { error: @product.errors }, status: :unprocessable_entity
         end
       end
 
       # PATCH/PUT /products/:id
       def update
         if @product
+          binding.pry
           if @product.update(product_params)
             render json: @product, status: :ok
           else
@@ -56,6 +58,10 @@ module Api
         end
       end
 
+      def types
+        @types = ProductType.all
+        render json: @types, status: :ok
+      end
       private
 
       def set_product
@@ -63,8 +69,8 @@ module Api
       end
 
       def product_params
-        params.require(:product).permit(:name, :description, :price, product_type_attributes: %i[id name _destroy],
-                                                                     product_attributes_attributes: %i[id name value _destroy])
+        params.require(:product).permit(:name,:quantity,:minimum_quantity,:slug,:needed,:product_type_id, :description, :price, product_type_attributes: %i[id name _destroy],
+          product_attributes_attributes: %i[id name description _destroy])
       end
     end
   end

@@ -12,7 +12,7 @@ const Product = (props) => {
     }
   }
   return (
-    <Card border={setNeededColor()}>
+    <Card border={setNeededColor()} className="mb-3" >
     <Card.Header>{props.attributes.name}</Card.Header>
     <Card.Body>
       <Card.Title>${props.attributes.price}</Card.Title>

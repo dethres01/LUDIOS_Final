@@ -7,13 +7,13 @@ FactoryBot.define do
     description { Faker::Lorem.paragraph }
     quantity { Faker::Number.number(digits: 2) }
     minimum_quantity { Faker::Number.number(digits: 2) }
+    # get product_type_id from product_type factory
+    association :product_type, factory: :product_type
     transient do
       product_attributes_count { 4 }
-      product_type_count { 1 }
     end
     after(:create) do |product, evaluator|
       create_list(:product_attribute, evaluator.product_attributes_count, product: product)
-      create_list(:product_type, evaluator.product_type_count, product: product)
     end
   end
 end
