@@ -32,17 +32,26 @@ class Order < ApplicationRecord
   validates :remaining_price, numericality: { greater_than_or_equal_to: 0 }
   # validate status inclusion
   validates :status, inclusion: { in: %w[ongoing completed cancelled] }
-  # validate payment_method inclusion with cash and deposit
-  validates :payment_method, inclusion: { in: %w[cash deposit] }
-  # validate description can be blank
-  # Callbacks
-  # calculate total_price and remaining_price
 
-  # Methods
-  # calculate total_price
+  validates :payment_method, inclusion: { in: %w[cash deposit] }
+
+  after_save :set_product_quantity
+  before_save :calculate_remaining_price
+  before_save :set_status
+
+
+  def set_product_quantity
+    if self.status == 'completed'
+      order_items.each do |order_item|
+        product = order_item.product
+        product.quantity -= order_item.quantity
+        product.save
+      end
+    end
+  end
+
   def calculate_total_price
     self.total_price = order_items.sum(:price)
-    print "total_price: #{total_price}\n"
   end
 
   def set_status
@@ -85,5 +94,9 @@ class Order < ApplicationRecord
   # returns true if order is not paid and not cancelled
   def payable?
     unpaid? && !cancelled?
+  end
+  # check if order is due in 1 week
+  def due_in_1_week?
+    due_date.between?(Date.today, Date.today + 7)
   end
 end

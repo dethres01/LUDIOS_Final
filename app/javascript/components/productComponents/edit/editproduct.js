@@ -10,21 +10,38 @@ import {useNavigate, useParams} from 'react-router-dom';
 const EditProduct = () => {
   const [product, setProduct] = useState({});
   const [productAttributes, setProductAttributes] = useState([]);
+  const [productTypes, setProductTypes] = useState([]);
+  const [select, setSelected] = useState('');
   //console.log(product)
   let params = useParams();
   const navigate = useNavigate();
   useEffect(() => {
+    axios.get('/api/v1/types')
+      .then(res => {
+        //console.log(res.data);
+        setProductTypes(res.data);
+
+        
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  },[]);
+  useEffect(() => {
     axios.get(`/api/v1/products/${params.slug}`)
     .then(res => {
-      console.log(res.data);
+      //console.log(res.data);
       setProduct(res.data);
       setProductAttributes(res.data.product_attributes);
+      setSelected(res.data.product_type);
     })
     .catch(err => {
       console.log(err);
     });
-  } ,[])
-
+  } ,[]);
+  const list = productTypes.map(type => {
+    return {value: type.id, label: type.name};
+  })
   const handleChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -70,6 +87,8 @@ const EditProduct = () => {
     <div>
       <h1>Edit Product</h1>
       <ProductForm
+        select={select}
+        list={list}
         productAttributes={productAttributes}
         attributes = {product}
         handleChange={handleChange}

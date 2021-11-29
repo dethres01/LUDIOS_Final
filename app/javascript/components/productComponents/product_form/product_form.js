@@ -6,24 +6,13 @@ import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Select from 'react-select';
-import axios from 'axios';
 
 
 const ProductForm = (props) => {
-  const [productTypes, setProductTypes] = useState([]);
+
   // sent by props
   //const [productAttributes, setProductAttributes] = useState([{name:'',description:''}]);
-  useEffect(() => {
-    axios.get('/api/v1/types')
-      .then(res => {
-        console.log(res.data);
-        setProductTypes(res.data);
-        
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  },[]);
+
 
   const nestedFields = props.productAttributes.map((attribute, index) => {
     return (
@@ -67,9 +56,17 @@ const ProductForm = (props) => {
       </Row>
     );
   })
-  const list = productTypes.map(type => {
-    return {value: type.id, label: type.name};
-  })
+  const select = () => {
+    if (props.select != '') {
+      return (
+        <Select
+        defaultInputValue = {props.select}
+        name = "product_type_id" 
+        options={props.list}
+        onChange={props.handleSelectChange} /> 
+      );
+    }
+  }
   return (
     <Container>
       <Form onSubmit={props.handleSubmit}>
@@ -131,11 +128,7 @@ const ProductForm = (props) => {
         </Form.Group>
         <div className="mb-3">
           <h3>Tipo de producto</h3>
-          <Select
-          defaultInputValue = { props.attributes.product_type }
-          name = "product_type_id" 
-          options={list}
-          onChange={props.handleSelectChange} />
+          {select()}
         </div>
         <div className="mb-3">
           <h3>Atributos</h3>

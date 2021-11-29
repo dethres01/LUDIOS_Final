@@ -3,6 +3,9 @@ import {useParams} from "react-router-dom";
 import axios from "axios";
 import Client from "../../clientComponents/clients/client";
 import Product from "./product"
+import Card from "react-bootstrap/Card"
+import Container from "react-bootstrap/Container";
+
 const Order = () => {
   const [order, setOrder] = useState({});
   const [products, setProducts] = useState([]);
@@ -20,7 +23,28 @@ const Order = () => {
       console.log(err)
     })
   }, [])
-
+  const localizeStatus = (status) => {
+    switch (status) {
+      case "ongoing":
+        return "Pendiente"
+      case "completed":
+        return "Entregado"
+      case "cancelled":
+        return "Cancelado"
+      default:
+        return "Desconocido"
+    }
+  }
+  const localizePaymentMethod = (payment_method) => {
+    switch (payment_method) {
+      case "cash":
+        return "Efectivo"
+      case "deposit":
+        return "Deposito"
+      default:
+        return "Desconocido"
+    }
+  }
   const list = products.map(product => {
     console.log(product)
     return (
@@ -33,29 +57,26 @@ const Order = () => {
   })
   return (
     <div>
-      <h1>Order</h1>
-      <div>
-        <h2>Detalles del Pedido</h2>
-        <div className="identifier">
-          <h3>Identificador: {order.id}</h3>
-        </div>
-        <div className="status">
-          <h3>Estado: {order.status}</h3>
-        </div>
-        <div className="Pricing">
-          <h3>Metodo de Pago: {order.payment_method}</h3>
-          <div className="total">
-            <h3>Total: {order.total_price}</h3> 
-          </div>
-          <div className="Restante">
-            <h3>Restante: {order.remaining_price}</h3>
-            <h3>Pagado: {order.paid }</h3>
-          </div>
-          <div className="Comentarios">
-            <h3>Comentarios: {order.description}</h3>
-          </div>
-        </div>
-      </div>
+      <Container>
+        <Card>
+          <Card.Body>
+            <Card.Title>Identificador: {order.id}</Card.Title>
+            <Card.Subtitle className="mb-2 text-muted">Estado: {localizeStatus(order.status)}</Card.Subtitle>
+            <Card.Text>
+              {order.description}
+            </Card.Text>
+            <Card.Subtitle className="mb-2 text-muted">Datos de la Orden</Card.Subtitle>
+            <Card.Text>
+                <p>Metodo de Pago: {localizePaymentMethod(order.payment_method)}</p>
+                <p>Total: ${order.total_price}</p>
+                <p>Pagado: ${order.paid}</p>
+                <p>Restante: ${order.remaining_price}</p>
+            </Card.Text>
+            <Card.Link href="#">Editar</Card.Link>
+            <Card.Link href="#">Another Link</Card.Link>
+          </Card.Body>
+        </Card>
+      </Container>
       <div>
         <h2> Detalles del Cliente </h2>
         <Client

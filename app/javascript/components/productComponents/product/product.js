@@ -44,13 +44,14 @@ const Product = () => {
         <Card.Body>
           <Card.Title>{product.name}</Card.Title>
           <Card.Subtitle className="mb-2 text-muted">${product.price}</Card.Subtitle>
+          <Card.Subtitle className="mb-2 text-muted">{product.product_type}</Card.Subtitle>
           <Card.Text>
             {product.description} 
           </Card.Text>
           <Card.Subtitle className="mb-2 text-muted">Datos de Inventario</Card.Subtitle>
           <Card.Text>
-            <p>Cantidad: {product.quantity} | Cantidad Minima: {product.minimum_quantity}</p>
-            <p>Necesario: {renderNeeded()}</p>
+            Cantidad: {product.quantity} | Cantidad Minima: {product.minimum_quantity}
+            Necesario: {renderNeeded()}
           </Card.Text>
           <Card.Link as={Link} to={`/products/edit/${product.slug}`}>Editar</Card.Link>
         </Card.Body>

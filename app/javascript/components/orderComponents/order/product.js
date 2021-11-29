@@ -5,15 +5,15 @@ import { Link } from 'react-router-dom'
 
 const Product = (props) => {
   return (
-    <Card>
+    <Card className="mb-3" >
     <Card.Header>{props.attributes.name}</Card.Header>
     <Card.Body>
       <Card.Title>${props.attributes.price}</Card.Title>
       <Card.Text>
-        Cantidad de Productos: {props.attributes.quantity}| 
-        Precio Total: {props.attributes.compound_price}
+        <p>Cantidad de Productos: {props.attributes.quantity} </p>
+        <p>Precio Total: {props.attributes.compound_price} </p>
       </Card.Text>
-      <Button as={Link} to={`/products/${props.attributes.slug}`}>Más Información</Button>
+      <Button as={Link} to={`/products/${props.attributes.slug}`}>Información del Producto</Button>
     </Card.Body>
   </Card>
   )
