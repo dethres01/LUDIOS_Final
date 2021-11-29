@@ -2,7 +2,9 @@
 import React, {useState,useEffect} from "react";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
-import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
+import Card from "react-bootstrap/Card";
+import Table from "react-bootstrap/Table";
 
 
 
@@ -30,42 +32,45 @@ const Product = () => {
   }
   const list = productAttributes.map(attribute => {
     return(
-      <div key={attribute.name}>
-        <p>{attribute.name}</p>
-        <p>{attribute.description}</p>
-      </div>
+      <tr key={attribute.name}>
+        <td>{attribute.name}</td>
+        <td>{attribute.description}</td>
+      </tr>
     )
   })
   return (
-    <div>
-      <div>
-        <Button as={Link} to={`/products/edit/${product.slug}`}>Editar</Button>
-      </div>
-      <div className="header">
-        <h1>{product.slug}</h1>
-      </div>
-      <div className="Product Container">
-          <div className="Product Name">
-            <h3>{product.name}</h3>
-          </div>
-          <div className="Product Price">
-            <h3>${product.price}</h3>
-          </div>
-          <div className="Product Description">
-            <h3>{product.product_type}</h3>
-            <p>{product.description}</p>
-          </div>
-          <div className="Product Inventory Info">
-            <h3>Cantidad Actual: {product.quantity}</h3>
-            <h3>Cantidad Mínima: {product.minimum_quantity}</h3>
-            <h3>Se necesita?: {renderNeeded()}</h3>
-          </div>
-          <div className="Product Attributes">
-            <h3>Atributos</h3>
-            {list}
-          </div>
-      </div>
-    </div>
+    <><Container>
+      <Card >
+        <Card.Body>
+          <Card.Title>{product.name}</Card.Title>
+          <Card.Subtitle className="mb-2 text-muted">${product.price}</Card.Subtitle>
+          <Card.Text>
+            {product.description} 
+          </Card.Text>
+          <Card.Subtitle className="mb-2 text-muted">Datos de Inventario</Card.Subtitle>
+          <Card.Text>
+            <p>Cantidad: {product.quantity} | Cantidad Minima: {product.minimum_quantity}</p>
+            <p>Necesario: {renderNeeded()}</p>
+          </Card.Text>
+          <Card.Link as={Link} to={`/products/edit/${product.slug}`}>Editar</Card.Link>
+        </Card.Body>
+      </Card>
+    </Container>
+    <Container>
+      <h2>Atributos</h2>
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+          </tr>
+        </thead>
+        <tbody>
+          {list}
+        </tbody>
+      </Table>
+    </Container>
+    </>
   );
 }
 
