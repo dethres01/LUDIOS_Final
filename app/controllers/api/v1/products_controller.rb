@@ -26,7 +26,6 @@ module Api
       # POST /products
       def create
         @product = Product.new(product_params)
-        binding.pry
         if @product.save
           render json: @product, status: :created
         else
@@ -37,7 +36,6 @@ module Api
       # PATCH/PUT /products/:id
       def update
         if @product
-          binding.pry
           if @product.update(product_params)
             render json: @product, status: :ok
           else
