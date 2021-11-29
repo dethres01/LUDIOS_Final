@@ -36,8 +36,8 @@ class Order < ApplicationRecord
   validates :payment_method, inclusion: { in: %w[cash deposit] }
 
   after_save :set_product_quantity
-  before_save :calculate_remaining_price
-  before_save :set_status
+  before_update :calculate_remaining_price
+  after_update :set_status
 
 
   def set_product_quantity

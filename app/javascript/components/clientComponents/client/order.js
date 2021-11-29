@@ -19,7 +19,7 @@ const Order = (props) => {
     }
   }
   return(
-    <Card border={getColorBorder()}>
+    <Card border={getColorBorder()} className="mb-3" >
       <Card.Header>Identificador: {props.attributes.id}</Card.Header>
       <Card.Body>
         <Card.Title>Status: {props.attributes.status}</Card.Title>

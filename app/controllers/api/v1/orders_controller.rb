@@ -24,6 +24,7 @@ module Api
       # POST /api/v1/orders
       def create
         @order = Order.new(order_params)
+        binding.pry
         if @order.save
           render json: @order, status: :created
         else

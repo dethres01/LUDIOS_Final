@@ -58,7 +58,7 @@ const Order = () => {
   return (
     <div>
       <Container>
-        <Card>
+        <Card className="mb-3">
           <Card.Body>
             <Card.Title>Identificador: {order.id}</Card.Title>
             <Card.Subtitle className="mb-2 text-muted">Estado: {localizeStatus(order.status)}</Card.Subtitle>
