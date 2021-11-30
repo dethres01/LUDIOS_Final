@@ -7,7 +7,7 @@ import ReactDOM from 'react-dom'
 import App from '../components/app'
 import Navigation from '../components/misc/navbar/navbar'
 import { BrowserRouter } from 'react-router-dom'
-import 'bootstrap/dist/css/bootstrap.min.css';
+import './app.scss';
 
 
 
