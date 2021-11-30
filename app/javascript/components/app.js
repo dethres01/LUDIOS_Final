@@ -12,6 +12,7 @@ import NewProduct from './productComponents/new/newproduct';
 import EditProduct from './productComponents/edit/editproduct';
 import NewClient from './clientComponents/new/newclient';
 import EditClient from './clientComponents/edit/editclient';
+import EditOrder from './orderComponents/edit/editorder';
 
 
 
